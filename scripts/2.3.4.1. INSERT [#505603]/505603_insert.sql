@@ -67,3 +67,26 @@ INSERT INTO inactive_products_archive (product_id, product_name, price)
 SELECT id, name, price from products
 where is_active = false
 RETURNING id, product_id, product_name, price, archived_at;
+
+INSERT INTO payments (order_id, amount, status)
+VALUES (1, 129990.00, 'PAID'),
+       (3, 4990.00, 'FAILED');
+
+INSERT INTO roles (code, name)
+VALUES ('ADMIN', 'Administrator'),
+       ('CUSTOMER', 'Customer'),
+       ('MANAGER', 'Manager'),
+       ('SUPPORT', 'Support');
+
+INSERT INTO user_roles (user_id, role_id)
+VALUES (1, 1),
+       (1, 2),
+       (2, 2);
+
+INSERT INTO categories (id, name, parent_id)
+VALUES
+    (1, 'Электроника', NULL),
+    (2, 'Смартфоны', 1),
+    (3, 'Ноутбуки', 1),
+    (4, 'Аксессуары', 1),
+    (5, 'Чехлы', 4);
