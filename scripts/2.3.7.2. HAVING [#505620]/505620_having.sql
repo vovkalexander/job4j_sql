@@ -66,7 +66,7 @@ ORDER BY p.id;
 
 -- вывести статусы заказов, для которых средняя сумма строки заказа больше 2000,
 -- но учитывать только заказы, созданные начиная с 1 января 2025 года.
-SELECT status, AVG(quantity * unit_price) FROM orders AS o
+SELECT status, AVG(quantity * unit_price) AS avg_line_total FROM orders AS o
 INNER JOIN order_items AS oi
 ON o.id = oi.order_id
 WHERE o.created_at >= DATE '2025-01-01'
